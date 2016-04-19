@@ -1,0 +1,288 @@
+<script id="my-popover.html" type="text/ng-template">
+  <ion-popover-view>
+    <ion-header-bar>
+      <h1 class="title">Settings</h1>
+    </ion-header-bar>
+    <ion-content>
+      <div class="list">
+        <a class="item"  ui-sref="changepassword" ng-click="closePopover()">
+          Change Password
+        </a>
+        <a class="item" target="_blank" ng-click="closePopover();logout()">
+          Logout
+        </a>
+      </div>
+    </ion-content>
+  </ion-popover-view>
+</script>
+
+<ion-view view-title="Add Item">
+  <ion-nav-buttons side="secondary">
+    <button class="button button-icon ion-gear-a" ng-click="openPopover($event)">
+    </button>
+  </ion-nav-buttons>
+  <ion-content>
+    <form name="myForm">
+      <div class="list"><br>
+        <label>Note : * indicates required field</label>
+
+        <!--<div ng-init="rad1=precious" />
+        &nbsp;&nbsp;&nbsp;  <input type="radio" ng-model="rad1" value="precious" name="one"  checked required> Precious
+      <span style="color:red" ng-show="myForm.one.$invalid && myForm.one.$pristine||myForm.one.$invalid && myForm.one.$dirty">
+      <span ng-show="myForm.one.$error.required">*required</span>
+      </span>
+
+        &nbsp;&nbsp;&nbsp;<input type="radio" ng-model="rad1" value="semi-precious" name="two" required> Semi-Precious<span style="color:red" ng-show="myForm.two.$invalid && myForm.two.$pristine||myForm.two.$invalid && myForm.two.$dirty">
+      <span ng-show="myForm.pur.$error.required">*required</span>
+      </span> <br/> -->
+
+
+        <div class="list">
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Type of Purchase<font color="red">*</font>
+            </div>
+            <select ng-model="purchasetype" name="type">
+              <option value="" style="display: none;">--Select One--</option>
+              <option selected>Own Stone</option>
+              <option>Supplier Stone</option>
+              <option>Consigned by Supplier</option>
+            </select>
+            <span style="color:red" ng-show="myForm.type.$invalid && myForm.type.$pristine ||myForm.type.$invalid && myForm.type.$dirty">
+              <span ng-show="myForm.type.$error.required"></span>
+           </span>
+          </label>
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Type of Stone<font color="red">*</font>
+            </div>
+            <select id="type" ng-model="rad1" ng-disabled="!purchasetype" name="st_type" ng-options="type for (type, stone_types) in stones" ng-change="GetSelectedType()">
+              <option value="" style="display: none;">--Select One--</option>
+            </select>
+            <span style="color:red" ng-show="myForm.st_type.$invalid && myForm.st_type.$pristine ||myForm.st_type.$invalid && myForm.st_type.$dirty">
+              <span ng-show="myForm.st_type.$error.required"></span>
+           </span>
+          </label>
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Name of Stone<font color="red">*</font>
+            </div>
+            <select id="stone" ng-disabled="!rad1" ng-model="stonename" name="Name" ng-options="st_type for (st_type, color) in rad1" ng-change="GetSelectedStone();st()">
+              <option value="" style="display: none;">--Select One--</option>
+            </select>
+            <span style="color:red" ng-show="myForm.Name.$invalid && myForm.Name.$pristine||myForm.Name.$invalid && myForm.Name.$dirty">
+              <span ng-show="myForm.Name.$error.required"></span>
+            </span>
+          </label>
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Size(MM)<font color="red">*</font>
+            </div>
+            <select ng-model="sizesize" name="siz" required>
+              <option value="" style="display: none;">--Select One--</option>
+              <option>5X4</option>
+              <option>6X4</option>
+              <option>6X5</option>
+              <option>7X5</option>
+              <option>8X6</option>
+              <option>9X7</option>
+            </select>
+            <span style="color:red" ng-show="myForm.siz.$invalid && myForm.siz.$pristine||myForm.siz.$invalid && myForm.siz.$dirty">
+              <span ng-show="myForm.siz.$error.required"></span>
+             </span>
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Total Weight(cts) <font color="red">*</font></span>
+            <input type="number" style="text-align: right" ng-model="weightweight"name="wt" required>
+            <span style="color:red" ng-show="myForm.wt.$invalid && myForm.wt.$pristine||myForm.wt.$invalid && myForm.wt.$dirty">
+              <span ng-show="myForm.wt.$error.required"></span>
+            </span>
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Pieces <font color="red">*</font></span>
+            <input type="text" style="text-align: right" ng-model="piecespieces" name="pcs" required>
+            <span style="color:red" ng-show="myForm.pcs.$invalid && myForm.pcs.$pristine||myForm.pcs.$invalid && myForm.pcs.$dirty">
+              <span ng-show="myForm.pcs.$error.required"></span>
+            </span>
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Dimension <font color="red">*</font></span>
+            <input type="text" style="text-align: right" ng-model="dimensions" name="dim" required>
+            <span style="color:red" ng-show="myForm.dim.$invalid && myForm.dim.$pristine||myForm.dim.$invalid && myForm.dim.$dirty">
+              <span ng-show="myForm.dim.$error.required"></span>
+            </span>
+          </label>
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Color<font color="red">*</font>
+            </div>
+            <select id="color" ng-disabled="!rad1 || !stonename" ng-model="colorco" name="col">
+              <option value="" style="display: none;">--Select One--</option>
+              <option ng-repeat="colo in stonename" value="{{colo}}">{{colo}}</option>
+            </select>
+            <span style="color:red" ng-show="myForm.col.$invalid && myForm.col.$pristine||myForm.col.$invalid && myForm.col.$dirty">
+              <span ng-show="myForm.col.$error.required"></span>
+            </span>
+          </label>
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Shape<font color="red">*</font>
+            </div>
+            <select ng-model="shapeshape" name="shap" required>
+              <option value="" style="display: none;">--Select One--</option>
+              <option>Round</option>
+              <option>Oval</option>
+              <option>Pear</option>
+              <option>Cushion</option>
+              <option>Princess</option>
+              <option>Emerald Cut</option>
+              <option>Trillion</option>
+              <option>Long Cushion </option>
+            </select>
+            <span style="color:red" ng-show="myForm.shap.$invalid && myForm.shap.$pristine||myForm.shap.$invalid && myForm.shap.$dirty">
+              <span ng-show="myForm.shap.$error.required"></span>
+            </span>
+          </label>
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Origin<font color="red">*</font>
+            </div>
+            <select ng-model="originor" name="org" required>
+              <option value="" style="display: none;">--Select One--</option>
+              <option>Burma</option>
+              <option>Mozambique</option>
+              <option>Sri Lanka</option>
+              <option>Madagaskar</option>
+              <option>Thailand</option>
+              <option>Columbia</option>
+              <option>Zambia</option>
+              <option>Kashmir</option>
+              <option>Russian</option>
+              <option>Autralian</option>
+            </select>
+            <span style="color:red" ng-show="myForm.org.$invalid && myForm.org.$pristine||myForm.org.$invalid && myForm.org.$dirty">
+              <span ng-show="myForm.org.$error.required"></span>
+            </span>
+          </label>
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Treatment Remark<font color="red">*</font>
+            </div>
+            <select ng-model="treat" ng-disabled="!stonename" name="trt" required>
+              <option value="" style="display: none;">--Select One--</option>
+              <option ng-repeat="treatment in treatments" value={{treatment}}>{{treatment}}</option>
+            </select>
+            <span style="color:red" ng-show="myForm.trt.$invalid && myForm.trt.$pristine||myForm.trt.$invalid && myForm.trt.$dirty">
+              <span ng-show="myForm.trt.$error.required"></span>
+            </span>
+          </label>
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Quality<font color="red">*</font>
+            </div>
+            <select ng-model="Quality" ng-disabled="!stonename" name="Qua" required>
+              <option value="" style="display: none;">--Select One--</option>
+              <option ng-repeat="quality in qualities" value={{quality}}>{{quality}}</option>
+            </select>
+            <span style="color:red" ng-show="myForm.Qua.$invalid && myForm.Qua.$pristine||myForm.Qua.$invalid && myForm.Qua.$dirty">
+              <span ng-show="myForm.Qua.$error.required"></span>
+            </span>
+          </label>
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Certificate Agency<font color="red">*</font>
+            </div>
+            <select ng-model="certi" name="cert" required>
+              <option value="" style="display: none;">--Select One--</option>
+              <option>GIA</option>
+              <option>HRD</option>
+              <option>IGI</option>
+              <option>GRS</option>
+              <option>AIGS</option>
+              <option>NGTC</option>
+              <option>LOTUS</option>
+              <option>Gubellin</option>
+            </select>
+            <span style="color:red" ng-show="myForm.cert.$invalid && myForm.cert.$pristine||myForm.cert.$invalid && myForm.cert.$dirty">
+              <span ng-show="myForm.cert.$error.required"></span>
+            </span>
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Exp. S.P./carat <font color="red">*</font></span>
+            <input type="number" style="text-align: right;" ng-model="salesPrice" name="exp" required>
+            <span style="color:red" ng-show="myForm.exp.$invalid && myForm.exp.$pristine||myForm.exp.$invalid && myForm.exp.$dirty">
+              <span ng-show="myForm.exp.$error.required"></span>
+            </span>
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Stock Id <font color="red">*</font></span>
+            <input type="text" style="text-align: right;" ng-model="stockid" name="stock" required>
+             <span style="color:red" ng-show="myForm.stock.$invalid && myForm.stock.$pristine||myForm.stock.$invalid && myForm.stock.$dirty">
+              <span ng-show="myForm.stock.$error.required"></span>
+            </span>
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Supplier ref. cert. no. <font color="red">*</font></span>
+            <input type="number" style="text-align: right;" ng-model="certificatenum" name="ref" required>
+            <span style="color:red" ng-show="myForm.ref.$invalid && myForm.ref.$pristine||myForm.ref.$invalid && myForm.ref.$dirty">
+              <span ng-show="myForm.ref.$error.required"></span>
+            </span>
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Purchase Price <font color="red">*</font></span>
+            <input type="number" style="text-align: right;" ng-model="purchase" name="pur" required>
+            <span style="color:red" ng-show="myForm.pur.$invalid && myForm.pur.$pristine||myForm.pur.$invalid && myForm.pur.$dirty">
+              <span ng-show="myForm.pur.$error.required"></span>
+            </span>
+          </label>
+        </div>
+
+
+        <div class="item row">
+          <div class="col">
+            <button ng-click="takePicture()" class="button button-block button-calm">Take Picture</button>
+          </div>
+          <div class="col">
+            <button ng-click="takePhoto()" class="button button-block button-positive">Choose Picture</button>
+          </div>
+        </div>
+
+
+        <div class="list card">
+
+          <ion-scroll direction="x" style="height:200px; min-height: 200px; overflow: scroll; white-space: nowrap;">
+            <img src="{{pictureUrl}}" style="height:200px; padding: 5px 5px 5px 5px;" />
+
+            <img src="{{pictureUrl1}}" style="height:200px; padding: 5px 5px 5px 5px;" />
+
+            <img src="{{pictureUrl2}}" style="height:200px; padding: 5px 5px 5px 5px;" />
+          </ion-scroll>
+
+        </div>
+
+        <p>
+
+          <button class="button button-block button-calm" ng-disabled="myForm.pur.$invalid && myForm.pur.$pristine||
+          myForm.pur.$invalid && myForm.pur.$dirty||myForm.ref.$invalid && myForm.ref.$pristine||
+          myForm.ref.$invalid && myForm.ref.$dirty||myForm.stock.$invalid && myForm.stock.$pristine||
+          myForm.stock.$invalid && myForm.stock.$dirty||myForm.exp.$invalid && myForm.exp.$pristine||
+          myForm.exp.$invalid && myForm.exp.$dirty||myForm.cert.$invalid && myForm.cert.$pristine||
+          myForm.cert.$invalid && myForm.cert.$dirty||myForm.trt.$invalid && myForm.trt.$pristine||
+          myForm.trt.$invalid && myForm.trt.$dirty||myForm.org.$invalid && myForm.org.$pristine||
+          myForm.org.$invalid && myForm.org.$dirty||myForm.shap.$invalid && myForm.shap.$pristine||
+          myForm.shap.$invalid && myForm.shap.$dirty||myForm.col.$invalid && myForm.col.$pristine||
+          myForm.col.$invalid && myForm.col.$dirty||myForm.dim.$invalid && myForm.dim.$pristine||
+          myForm.dim.$invalid && myForm.dim.$dirty||myForm.pcs.$invalid && myForm.pcs.$pristine||
+          myForm.pcs.$invalid && myForm.pcs.$dirty||myForm.wt.$invalid && myForm.wt.$pristine||
+          myForm.wt.$invalid && myForm.wt.$dirty||myForm.siz.$invalid && myForm.siz.$pristine||
+          myForm.siz.$invalid && myForm.siz.$dirty||myForm.Name.$invalid && myForm.Name.$pristine||
+          myForm.Name.$invalid && myForm.Name.$dirty||myForm.type.$invalid && myForm.type.$pristine||
+          myForm.type.$invalid && myForm.type.$dirty||myForm.one.$invalid && myForm.one.$pristine||
+          myForm.one.$invalid && myForm.one.$dirty" ng-click="enter()">Submit</button>
+          <!--<input type="submit" ng-click="enter(purchasetype,stonename,Size,weight,pieces,dimension,Color,Shape,Origin,treatment,certi,salesPrice,stockid,certificatenum,purchase)"> -->
+        </p>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>
+
