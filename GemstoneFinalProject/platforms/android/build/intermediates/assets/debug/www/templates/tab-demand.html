@@ -23,12 +23,13 @@
     </ion-nav-buttons>
     <ion-pane>
         <ion-content>
+            <form name="myForm" id="myForm">
             <div class="list list-inset">
                 <label class="item item-input item-select">
                     <div class="input-label">
                         Stone Name :<font color="red">*</font>
                     </div>
-                    <select ng-model="demand_stone" name="stn" required>
+                    <select ng-model="demand_stone" id="stn" name="stn" ng-change="getDemandStone();sto();" required>
                         <option value="" style="display: none;">--Select One--</option>
                         <option>Ruby</option>
                         <option>Sapphire</option>
@@ -40,7 +41,7 @@
                         <option>Diamonds(Yellow)</option>
                     </select>
             <span style="color:red" ng-show="myForm.stn.$invalid && myForm.stn.$pristine||myForm.stn.$invalid && myForm.stn.$dirty">
-              <span ng-show="myForm.stn.$error.required">Required</span>
+              <span ng-show="myForm.stn.$error.required"></span>
              </span>
                 </label>
                 <label class="item item-input item-select">
@@ -57,24 +58,16 @@
                         <option>9X7</option>
                     </select>
             <span style="color:red" ng-show="myForm.siz.$invalid && myForm.siz.$pristine||myForm.siz.$invalid && myForm.siz.$dirty">
-              <span ng-show="myForm.siz.$error.required">Required</span>
+              <span ng-show="myForm.siz.$error.required"></span>
              </span>
                 </label>
                 <label class="item item-input item-select">
                     <div class="input-label">
                         Color<font color="red">*</font>
                     </div>
-                    <select ng-model="demand_color" name="col" required>
+                    <select ng-model="demand_color" ng-disabled="!demand_stone" name="col" required>
                         <option value="" style="display: none;">--Select One--</option>
-                        <option>Red</option>
-                        <option>Light Green</option>
-                        <option>Deep Green</option>
-                        <option>Light Blue</option>
-                        <option>Deep Bue</option>
-                        <option>Purple</option>
-                        <option>Pinkish Red</option>
-                        <option>Orangish Red</option>
-                        <option>White</option>
+                        <option ng-repeat="colu in colus" value={{colu}}>{{colu}}</option>
                     </select>
             <span style="color:red" ng-show="myForm.col.$invalid && myForm.col.$pristine||myForm.col.$invalid && myForm.col.$dirty">
               <span ng-show="myForm.col.$error.required"></span>
@@ -97,23 +90,23 @@
                         <option>Long Cushion </option>
                     </select>
             <span style="color:red" ng-show="myForm.shap.$invalid && myForm.shap.$pristine||myForm.shap.$invalid && myForm.shap.$dirty">
-              <span ng-show="myForm.shap.$error.required">Required</span>
+              <span ng-show="myForm.shap.$error.required"></span>
             </span>
                 </label>
 
                 <label class="item item-input">
                     <span class="input-label">Dimension <font color="red">*</font></span>
-                    <input type="text" ng-model="demand_dimensions" name="dim" required>
+                    <input type="text" style="text-align: right;" ng-model="demand_dimensions" name="dim" required>
             <span style="color:red" ng-show="myForm.dim.$invalid && myForm.dim.$pristine||myForm.dim.$invalid && myForm.dim.$dirty">
-              <span ng-show="myForm.dim.$error.required">Required</span>
+              <span ng-show="myForm.dim.$error.required"></span>
             </span>
                 </label>
 
                 <label class="item item-input">
                     <span class="input-label">Pieces <font color="red">*</font></span>
-                    <input type="text" ng-model="demand_pieces" name="piece" required>
+                    <input type="text" style="text-align: right;" ng-model="demand_pieces" name="piece" required>
             <span style="color:red" ng-show="myForm.piece.$invalid && myForm.piece.$pristine||myForm.piece.$invalid && myForm.piece.$dirty">
-              <span ng-show="myForm.piece.$error.required">Required</span>
+              <span ng-show="myForm.piece.$error.required"></span>
             </span>
                 </label>
 
@@ -123,8 +116,9 @@
           myForm.col.$invalid && myForm.col.$dirty||myForm.shap.$invalid && myForm.shap.$pristine||
           myForm.shap.$invalid && myForm.shap.$dirty||myForm.piece.$invalid && myForm.piece.$pristine||
           myForm.piece.$invalid && myForm.piece.$dirty||myForm.dim.$invalid && myForm.dim.$pristine||
-          myForm.dim.$invalid && myForm.dim.$dirty" ng-click="demandReq();demand_stone='';demand_size='';demand_color='';demand_shape='';demand_pieces='';demand_dimensions='';demand_quantity='';">Submit</button>
+          myForm.dim.$invalid && myForm.dim.$dirty" ng-click="enterDemand();demand_stone='';demand_size='';demand_color='';demand_shape='';demand_pieces='';demand_dimensions='';demand_quantity='';">Submit</button>
             </div>
+            </form>
         </ion-content>
     </ion-pane>
 </ion-view>

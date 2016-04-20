@@ -3,6 +3,9 @@ var user;
 var pass;
 var count = 0;
 var count1= 0;
+var stoneName;
+var stoneType;
+var stnName;
 
 angular.module('starter.controllers', ['ionic','ngCordova'])
 
@@ -382,16 +385,42 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
             }
         };
 
-        $scope.GetSelectedPurType = function () {
-            $scope.strPurType = $("#purtype option:selected").text();
-        };
 
         $scope.GetSelectedType = function () {
             $scope.strType = $("#type option:selected").text();
+            stoneType = $scope.strType;
         };
         $scope.GetSelectedStone = function () {
             $scope.strStone = $("#stone option:selected").text();
+            stoneName = $scope.strStone;
         };
+        $scope.st = function(){
+            if(stoneName == 'Ruby'||stoneName == 'Sapphire'){
+                $scope.treatments = ['Heated','Non Heated','Major Treatment','Filled'];
+                $scope.qualities = ['Clean','Slight Inclusion','Bubbles'];
+            }
+            if(stoneName == 'Sapphire'){
+                $scope.treatments = ['Heated','Non Heated','Major Treatment','Filled'];
+                $scope.qualities = ['Clean','Slight Inclusion','Major Inclusion'];
+            }
+            if(stoneName == 'Emerald'){
+                $scope.treatments = ['No Oil','Insignificant Oil','Minor Oil','Minor to Moderate Oil','Moderate Oil'];
+                $scope.qualities = ['Clean','Slight Inclusion','Major Inclusion'];
+            }
+            if(stoneName == 'Rubellite'){
+                $scope.treatments = ['Heated','Non Heated','Major Treatment','Filled'];
+                $scope.qualities = ['Clean','Slight Inclusion','Major Inclusion'];
+            }
+            if(stoneName == 'Tanzanite'){
+                $scope.treatments = ['Heated','Non Heated','Major Treatment','Filled'];
+                $scope.qualities = ['Clean','Slight Inclusion','Major Inclusion'];
+            }
+            if(stoneType == 'Diamonds'){
+                $scope.treatments = ['Heated','Non Heated','Major Treatment','Filled'];
+                $scope.qualities = ['IF','VVS1','VVS2','VS1','VS2','SI1','SI2','SI3','I1','I2'];
+            }
+
+        }
 
 
         $scope.showPerDetails=function(){
@@ -410,6 +439,7 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
                     $scope.sPieces=test.sPieces;
                     $scope.sDimensions=test.sDimensions;
                     $scope.sColor=test.sColor;
+                    $scope.sQuality=test.sQuality;
                     $scope.stoneShape=test.stoneShape;
                     $scope.sOrigin=test.sOrigin;
                     $scope.sRemark=test.sRemark;
@@ -418,8 +448,9 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
                     $scope.stockId=test.stockId;
                     $scope.sSupplierRef=test.sSupplierRef;
                     $scope.sPurchase=test.sPurchase;
-                    $scope.image=test.image;
-
+                    $scope.image1=test.image1;
+                    $scope.image2=test.image2;
+                    $scope.image3=test.image3;
                 })
         };
 
@@ -588,7 +619,7 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
                 };
                 $cordovaCamera.getPicture(options).then(function (imageData2) {
                     $scope.imgdata3 = imageData2;
-                    $scope.pictureUrl1 = 'data:image/jpeg;base64,' + imageData2;
+                    $scope.pictureUrl2 = 'data:image/jpeg;base64,' + imageData2;
                     //$scope.blobImg = dataURItoBlob($scope.pictureUrl);
                     window.alert("Picture Captured .. !!");
                     count1++;
@@ -598,27 +629,6 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
             };
 
         };
-        /* $scope.submitPhoto = function()
-         {
-         alert("entered function");
-         var imagename = "new image";
-         var imagefile = $scope.imgdata;
-         alert(imagefile);
-         var request = $http({
-         method: "post",
-         url: "http://gemstonelive.azurewebsites.net/api/imageTables",
-         crossDomain: true,
-         data: {
-         name:imagename,
-         image:imagefile
-         },
-         headers: {'Content-Type': 'application/json'}
-         })
-         .success(function (resp) {
-         alert("image has been entered successfully");
-         $scope.pictureUrl="";
-         })
-         } */
 
 
         $scope.logout=function(){
@@ -629,24 +639,24 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
 
         $scope.enter = function ()
         {
-            alert(user);
-            var purchaseType = $scope.strPurType; alert(purchaseType);
-            var radioSelected=$scope.strType;alert(radioSelected);
-            var stoneName=$scope.strStone;alert(stoneName);
-            var size=this.sizesize;alert(size);
-            var weight=this.weightweight;alert(weight);
-            var pieces=this.piecespieces;alert(pieces);
-            var dimensions=this.dimensions;alert(dimensions);
-            var color=this.colorco;alert(color);
-            var shape=this.shapeshape;alert(shape);
-            var origin=this.originor;alert(origin);
-            var treatment=this.treatment;alert(treatment);
-            var Quality=this.Quality;alert(Quality);
-            var certificates=this.certi;alert(certificates);
-            var carat=this.salesPrice;alert(carat);
-            var stock_id=this.stockid;alert(stock_id);
-            var supplierCert=this.certificatenum;alert(supplierCert);
-            var pur_price=this.purchase;alert(pur_price);
+            //alert(user);
+            var purchaseType = this.purchasetype;
+            var radioSelected=$scope.strType;
+            var stoneName=$scope.strStone;
+            var size=this.sizesize;
+            var weight=this.weightweight;
+            var pieces=this.piecespieces;
+            var dimensions=this.dimensions;
+            var color=this.colorco;
+            var shape=this.shapeshape;
+            var origin=this.originor;
+            var treatment=this.treat;
+            var Quality=this.Quality;
+            var certificates=this.certi;
+            var carat=this.salesPrice;
+            var stock_id=this.stockid;
+            var supplierCert=this.certificatenum;
+            var pur_price=this.purchase;
             var img1 = $scope.imgdata1;
             var img2 = $scope.imgdata2;
             var img3 = $scope.imgdata3;
@@ -710,6 +720,7 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
             this.piecespieces = "";
             this.dimensions = "";
             this.colorco = "";
+            this.Quality = "",
             this.shapeshape= "";
             this.originor="";
             this.treatment="";
@@ -718,7 +729,6 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
             this.stockid="";
             this.certificatenum="";
             this.purchase="";
-
             $scope.pictureUrl="http://placehold.it/100x100";
             $scope.pictureUrl1="http://placehold.it/100x100";
             $scope.pictureUrl2="http://placehold.it/100x100";
@@ -730,7 +740,7 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
 
 
 
-    .controller('AccountCtrl', function($scope,$http,$ionicPopover,$ionicModal,$state) {
+    .controller('AccountCtrl', function($scope,$http,$ionicPopover,$ionicPopup,$ionicModal,$state) {
 
         var template = '<ion-popover-view><ion-header-bar><h1 class="title">Settings</h1></ion-header-bar><ion-content><div class="list"><a class="item" target="_blank" ui-sref="changepassword" ng-click="hidePopover()">Change Password</a><a class="item" target="_blank" ng-click="hidePopover();logout()">Logout</a></div></ion-content></ion-popover-view>';
 
@@ -794,9 +804,76 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
             window.location = "index.html";
         };
 
+        $scope.getDemandStone = function(){
+            $scope.strStn = $("#stn option:selected").text();
+            stnName = $scope.strStn;
+        }
 
-        $scope.demandReq = function () {
-            alert("Your Rquest has been sent to Admin");
+        $scope.sto = function(){
+            if(stnName == 'Ruby'){
+                $scope.colus = ['Vivid Red','Piegon Blood','Red'];
+            }
+            if(stnName == 'Sapphire'){
+                $scope.colus = ['Royal Blue','Corn Flower Blue','Blue','Deep Blue'];
+            }
+            if(stnName == 'Emerald'){
+                $scope.colus = ['Green','Deep Green','Light Green'];
+            }
+            if(stnName == 'Rubellite'){
+                $scope.colus = ['Red','Pinkish Red','Orangish Red'];
+            }
+            if(stnName == 'Tanzanite'){
+                $scope.colus = ['Purple Blue','Deep Blue','Light Blue'];
+            }
+            if(stnName == 'Green Tourmaline'){
+                $scope.colus = ['Light Green','Deep Green'];
+            }
+            if(stnName == 'Diamonds(White)'){
+                $scope.colus = ['Creame White','White'];
+            }
+            if(stnName == 'Diamonds(Yellow)'){
+                $scope.colus = ['Creame White','White','Yellow'];
+            }
+
+        }
+
+
+        $scope.enterDemand = function () {
+            var dimensionsDemand = this.demand_dimensions;
+            var demandPieces=this.demand_pieces;
+            var demandShape=this.demand_shape;
+            var demandColor=this.demand_color;
+            var demandSize=this.demand_size;
+            var demandStone=this.demand_stone;
+
+//alert(radioSelected);
+
+            var request = $http({
+                method: "post",
+                url: "http://gemstonelive.azurewebsites.net/api/demandRequests",
+                crossDomain: true,
+                data: {
+                    Size: demandSize,
+                    Color: demandColor,
+                    Shape : demandShape,
+                    Dimension : dimensionsDemand,
+                    Pieces: demandPieces,
+                    UserName: user,
+                    StoneName: demandStone
+                },
+                headers: {'Content-Type': 'application/json'}
+            })
+                .success(function (resp) {
+
+                    //alert(resp);
+                    //further code will refresh the current database data on page
+
+                    var alertPopup = $ionicPopup.alert({
+                        title: 'Successful!!',
+                        template: 'Your demand is requested to admin..!!'
+                    });
+                    //window.location='./main.html';
+                });
         }
 
 
@@ -811,17 +888,6 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
                 $scope.userNames = test.userNames;
                 $scope.sName = test.sName;
             });
-
-        //var id=this.im_id;
-
-        /*
-         $http.get("http://gemstonelive.azurewebsites.net/api/imageTables")
-         .success(function(res){
-         $scope.getimageDetails=res;
-         var newImage=$scope.getimageDetails;
-         $scope.name=newImage.name;
-         $scope.image=newImage.image;
-         }); */
 
 
         $scope.showDetail=function(){
@@ -842,6 +908,7 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
                     $scope.sPieces=test.sPieces;
                     $scope.sDimensions=test.sDimensions;
                     $scope.sColor=test.sColor;
+                    $scope.sQuality=test.sQuality;
                     $scope.stoneShape=test.stoneShape;
                     $scope.sOrigin=test.sOrigin;
                     $scope.sRemark=test.sRemark;
@@ -850,7 +917,9 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
                     $scope.stockId=test.stockId;
                     $scope.sSupplierRef=test.sSupplierRef;
                     $scope.sPurchase=test.sPurchase;
-                    $scope.image=test.image;
+                    $scope.image1=test.image1;
+                    $scope.image2=test.image2;
+                    $scope.image3=test.image3;
 
                 })
         };
