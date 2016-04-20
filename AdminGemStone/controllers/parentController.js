@@ -338,12 +338,12 @@ $scope.approve_req=function()
                          $http.get("http://gemstonelive.azurewebsites.net/api/perItemDetails")
                                    .success(function (res) {
                                        $scope.getPerItemDetails = res;
-                                       alert("1");
+                                       //alert("1");
                                    });
                          $http.get("http://gemstonelive.azurewebsites.net/api/soldItemDetails")
                              .success(function (res) {
                                  $scope.getSoldItems = res;
-                                 alert("2");
+                                 //alert("2");
                              });
                      })
 				
@@ -483,7 +483,8 @@ $scope.approve_req=function()
 		var spieces1 ;
 		var sdimensions1 ;
 		var sorigin1 ;
-		var color1 ;
+		var color1;
+		var quality1;
 		var stoneshape1 ;
 		var sremark1 ;
 		var sceragency1 ;

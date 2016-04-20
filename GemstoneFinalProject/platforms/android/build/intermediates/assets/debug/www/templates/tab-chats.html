@@ -67,7 +67,7 @@
             <div class="input-label">
               Name of Stone<font color="red">*</font>
             </div>
-            <select id="stone" ng-disabled="!rad1" ng-model="stonename" name="Name" ng-options="st_type for (st_type, color) in rad1" ng-change="GetSelectedStone()">
+            <select id="stone" ng-disabled="!rad1" ng-model="stonename" name="Name" ng-options="st_type for (st_type, color) in rad1" ng-change="GetSelectedStone();st()">
               <option value="" style="display: none;">--Select One--</option>
             </select>
             <span style="color:red" ng-show="myForm.Name.$invalid && myForm.Name.$pristine||myForm.Name.$invalid && myForm.Name.$dirty">
@@ -164,16 +164,26 @@
               <span ng-show="myForm.org.$error.required"></span>
             </span>
           </label>
-          <label class="item item-input">
-            <span class="input-label">Treatment Remark <font color="red">*</font></span>
-            <input type="text" style="text-align: right" ng-model="treatment" name="trt" required>
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Treatment Remark<font color="red">*</font>
+            </div>
+            <select ng-model="treat" ng-disabled="!stonename" name="trt" required>
+              <option value="" style="display: none;">--Select One--</option>
+              <option ng-repeat="treatment in treatments" value={{treatment}}>{{treatment}}</option>
+            </select>
             <span style="color:red" ng-show="myForm.trt.$invalid && myForm.trt.$pristine||myForm.trt.$invalid && myForm.trt.$dirty">
               <span ng-show="myForm.trt.$error.required"></span>
             </span>
           </label>
-          <label class="item item-input">
-            <span class="input-label">Quality <font color="red">*</font></span>
-            <input type="text" ng-model="Quality" name="Qua" required>
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Quality<font color="red">*</font>
+            </div>
+            <select ng-model="Quality" ng-disabled="!stonename" name="Qua" required>
+              <option value="" style="display: none;">--Select One--</option>
+              <option ng-repeat="quality in qualities" value={{quality}}>{{quality}}</option>
+            </select>
             <span style="color:red" ng-show="myForm.Qua.$invalid && myForm.Qua.$pristine||myForm.Qua.$invalid && myForm.Qua.$dirty">
               <span ng-show="myForm.Qua.$error.required"></span>
             </span>
