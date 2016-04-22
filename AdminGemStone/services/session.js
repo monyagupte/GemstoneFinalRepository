@@ -8,9 +8,10 @@
  */
 angular.module('loginApp').service('Session', function($rootScope, USER_ROLES) {
 
-	this.create = function(user) {
-		this.user = user;
-		this.userRole = user.userRole;
+	this.create = function(loginData,agentRole) {
+		this.user = loginData;
+		this.userRole = agentRole;
+		alert(userRole);
 	};
 	this.destroy = function() {
 		this.user = null;

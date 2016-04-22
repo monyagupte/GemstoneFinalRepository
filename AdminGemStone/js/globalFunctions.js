@@ -1,8 +1,7 @@
-/**
- * Contains functions that are added to the root AngularJs scope.
- */
+
+
 angular.module('loginApp').run(function($rootScope, $state, Auth, AUTH_EVENTS) {
-	
+
 	//before each state change, check if the user is logged in
 	//and authorized to move onto the next state
 	$rootScope.$on('$stateChangeStart', function (event, next) {
@@ -18,8 +17,8 @@ angular.module('loginApp').run(function($rootScope, $state, Auth, AUTH_EVENTS) {
 	      }
 	    }
 	  });
-	
-	/* To show current active state on menu */
+
+	//To show current active state on menu
 	$rootScope.getClass = function(path) {
 		if ($state.current.name == path) {
 			return "active";
@@ -27,7 +26,7 @@ angular.module('loginApp').run(function($rootScope, $state, Auth, AUTH_EVENTS) {
 			return "";
 		}
 	}
-	
+
 	$rootScope.logout = function(){
 		Auth.logout();
 	};

@@ -76,70 +76,6 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
                 })
         };
 
-        $scope.changePassword=function(oldPass,newPass,confirm_pass){
-
-            $http.get("http://gemstonelive.azurewebsites.net/api/perUserRegisters?username="+user)
-                .then(function onFulfilled(resp) {
-                    $scope.getnames = resp.data;
-                    var getDetails = $scope.getnames;
-                    var id = getDetails[0].id;
-                    var checkPass = getDetails[0].passWord;
-                    var pass=oldPass;
-                    var firstname = getDetails[0].firstName;
-                    var lastname = getDetails[0].lastName;
-                    var agent_username = getDetails[0].userName;
-                    var location = getDetails[0].originAgent;
-                    var emailid = getDetails[0].emailId;
-                    var contact = getDetails[0].contactAgent;
-                    var ag_roles = getDetails[0].agentRole;
-                    var addedby = getDetails[0].addedBy;
-                    var new_pass = newPass;
-                    var confirmpass = confirm_pass;
-                    //alert(confirm_pass);
-                    if (pass==checkPass){
-                        if(new_pass==confirm_pass) {
-                            alert("1");
-                            $http.delete("http://gemstonelive.azurewebsites.net/api/perUserRegisters/"+id)
-                                .success(function (res) {
-
-                                    var request = $http({
-                                        method: "post",
-                                        url: "http://gemstonelive.azurewebsites.net/api/perUserRegisters",
-                                        crossDomain: true,
-                                        data: {
-                                            firstName: firstname,
-                                            lastName: lastname,
-                                            userName: agent_username,
-                                            agentRole: ag_roles,
-                                            emailId: emailid,
-                                            contactAgent: contact,
-                                            addedBy: addedby,
-                                            passWord: new_pass,
-                                            originAgent: location
-                                        },
-                                        headers: {'Content-Type': 'application/json'}
-                                    }).success(function (resp) {
-
-                                        alert('Password Changed Successfully');
-                                    })
-
-                                })
-
-
-                        }
-                        else
-                        {
-                            alert("Passwords doesn't match..")
-                        }
-                    }
-                    else
-                    {
-                        alert("Wrong Password!! Please Enter the Correct Old Password")
-                    }
-
-                })
-        };
-
 
         $scope.insert=function(){
             $state.go('signup')
@@ -281,6 +217,14 @@ angular.module('starter.controllers', ['ionic','ngCordova'])
         $scope.hide = function(){
             $ionicLoading.hide();
         };
+
+        $http.get("http://gemstonelive.azurewebsites.net/api/perItemDetails")
+            .success(function(res){
+                $scope.getItemDetails=res;
+              var lengthh=res.length;
+                $rootScope.totalLen=lengthh;
+
+            })
 
 
         $scope.login = function (text1,text2) {

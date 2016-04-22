@@ -8,42 +8,53 @@ function($http, $rootScope, $window, Session, AUTH_EVENTS) {
 	
 	//the login function
 	authService.login = function(user, success, error) {
-		$http.get('misc/users.json').success(function(data) {
-		
-		//this is my dummy technique, normally here the 
-		//user is returned with his data from the db
-		var users = data.users;
-		if(users[user.username]){
-			var loginData = users[user.username];
-			//insert your custom login function here 
-			if(user.username == loginData.username && user.password == loginData.username){
-				//set the browser session, to avoid relogin on refresh
-				$window.sessionStorage["userInfo"] = JSON.stringify(loginData);
-				
-				//delete password not to be seen clientside 
-				delete loginData.password;
-				
-				//update current user into the Session service or $rootScope.currentUser
-				//whatever you prefer
-				Session.create(loginData);
-				//or
-				$rootScope.currentUser = loginData;
-				
-				//fire event of successful login
-				$rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
-				//run success function
-				success(loginData);
-			} else{
-				//OR ELSE
-				//unsuccessful login, fire login failed event for 
-				//the according functions to run
-				$rootScope.$broadcast(AUTH_EVENTS.loginFailed);
-				error();
-			}
-		}	
-		});
-		
-	};
+		$http.get("http://gemstonelive.azurewebsites.net/api/panelUsers?userName=" + user.username)
+			.success(function (res) {
+				//this is my dummy technique, normally here the
+				//user is returned with his data from the db
+
+
+				var users = res[0].userName;
+				var pass=res[0].passWord;
+				var agentRole=res[0].userRole;
+
+
+					var loginData = users;
+					var loginPass=pass;
+
+					//insert your custom login function here
+					if(user.username == users && user.password == pass){
+						//set the browser session, to avoid relogin on refresh
+
+				$state.go("home");
+						//		$window.sessionStorage["userInfo"] = loginData;
+
+						//delete password not to be seen clientside
+					//	delete loginData.password;
+
+						//update current user into the Session service or $rootScope.currentUser
+						//whatever you prefer
+				//		Session.create(loginData,agentRole);
+						//or
+				//		$rootScope.currentUser = loginData;
+
+						//fire event of successful login
+				//		$rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
+						//run success function
+				//		success(loginData);
+					} else{
+						//OR ELSE
+						//unsuccessful login, fire login failed event for
+						//the according functions to run
+				//		$rootScope.$broadcast(AUTH_EVENTS.loginFailed);
+						error();
+					}
+				});
+
+
+			};
+
+
 
 	//check if the user is authenticated
 	authService.isAuthenticated = function() {
@@ -63,10 +74,13 @@ function($http, $rootScope, $window, Session, AUTH_EVENTS) {
 	
 	//log out the user and broadcast the logoutSuccess event
 	authService.logout = function(){
-		Session.destroy();
+	window.location="index.html";
+		/*Session.destroy();
 		$window.sessionStorage.removeItem("userInfo");
-		$rootScope.$broadcast(AUTH_EVENTS.logoutSuccess);
+		$rootScope.$broadcast(AUTH_EVENTS.logoutSuccess);*/
 	}
 
 	return authService;
-} ]);
+
+
+}]);

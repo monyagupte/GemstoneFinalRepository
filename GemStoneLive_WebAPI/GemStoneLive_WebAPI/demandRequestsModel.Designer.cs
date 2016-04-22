@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\GEMSTONE_REPOSITORY_NAYAWALA\Gemstone_New_Repository\GemStoneLive_WebAPI\GemStoneLive_WebAPI\demandRequestsModel.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\GemstoneFinalRepositoryDoneGITHUB\GemstoneFinalRepository\GemStoneLive_WebAPI\GemStoneLive_WebAPI\demandRequestsModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

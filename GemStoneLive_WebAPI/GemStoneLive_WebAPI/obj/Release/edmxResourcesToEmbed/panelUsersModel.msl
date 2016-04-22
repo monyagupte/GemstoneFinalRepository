@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GemStone_LIVEModel7StoreContainer" CdmEntityContainer="GemStone_LIVEEntities8">
+    <EntitySetMapping Name="panelUsers">
+      <EntityTypeMapping TypeName="GemStone_LIVEModel7.panelUser">
+        <MappingFragment StoreEntitySet="panelUsers">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="passWord" ColumnName="passWord" />
+          <ScalarProperty Name="userRole" ColumnName="userRole" />
+          <ScalarProperty Name="contact" ColumnName="contact" />
+          <ScalarProperty Name="emailId" ColumnName="emailId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
