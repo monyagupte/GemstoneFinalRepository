@@ -240,6 +240,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\imageTablesController.cs" />
     <Compile Include="Controllers\itemDetailsController.cs" />
+    <Compile Include="Controllers\panelUsersController.cs" />
     <Compile Include="Controllers\perItemDetailsController.cs" />
     <Compile Include="Controllers\perUserRegistersController.cs" />
     <Compile Include="Controllers\soldItemDetailsController.cs" />
@@ -305,6 +306,24 @@
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="panelUser.cs">
+      <DependentUpon>panelUsersModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="panelUsersModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>panelUsersModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="panelUsersModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>panelUsersModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="panelUsersModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>panelUsersModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="perItemDetail.cs">
       <DependentUpon>perItemDetailsModel.tt</DependentUpon>
     </Compile>
@@ -419,6 +438,16 @@
       <DependentUpon>itemDetailsModel.edmx</DependentUpon>
       <LastGenOutput>itemDetailsModel.cs</LastGenOutput>
     </Content>
+    <Content Include="panelUsersModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>panelUsersModel.edmx</DependentUpon>
+      <LastGenOutput>panelUsersModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="panelUsersModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>panelUsersModel.edmx</DependentUpon>
+      <LastGenOutput>panelUsersModel.cs</LastGenOutput>
+    </Content>
     <Content Include="perItemDetailsModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>perItemDetailsModel.edmx</DependentUpon>
@@ -479,13 +508,6 @@
     <Content Include="imageTableModel.edmx.diagram">
       <DependentUpon>imageTableModel.edmx</DependentUpon>
     </Content>
-    <EntityDeploy Include="demandRequestsModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>demandRequestsModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="demandRequestsModel.edmx.diagram">
-      <DependentUpon>demandRequestsModel.edmx</DependentUpon>
-    </Content>
     <EntityDeploy Include="itemDetailsModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>itemDetailsModel.Designer.cs</LastGenOutput>
@@ -499,6 +521,20 @@
     </EntityDeploy>
     <Content Include="perItemDetailsModel.edmx.diagram">
       <DependentUpon>perItemDetailsModel.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="panelUsersModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>panelUsersModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="panelUsersModel.edmx.diagram">
+      <DependentUpon>panelUsersModel.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="demandRequestsModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>demandRequestsModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="demandRequestsModel.edmx.diagram">
+      <DependentUpon>demandRequestsModel.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\gemstonelive - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

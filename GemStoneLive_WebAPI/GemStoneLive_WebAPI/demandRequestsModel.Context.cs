@@ -13,10 +13,10 @@ namespace GemStoneLive_WebAPI
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class GemStone_LIVEEntities4 : DbContext
+    public partial class GemStone_LIVEEntities11 : DbContext
     {
-        public GemStone_LIVEEntities4()
-            : base("name=GemStone_LIVEEntities4")
+        public GemStone_LIVEEntities11()
+            : base("name=GemStone_LIVEEntities11")
         {
         }
     

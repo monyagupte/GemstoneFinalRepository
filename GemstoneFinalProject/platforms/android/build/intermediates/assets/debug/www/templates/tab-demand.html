@@ -46,7 +46,7 @@
                 </label>
                 <label class="item item-input item-select">
                     <div class="input-label">
-                        Size(MM)<font color="red">*</font>
+                        Size(MM)
                     </div>
                     <select ng-model="demand_size" name="siz" required>
                         <option value="" style="display: none;">--Select One--</option>
@@ -57,21 +57,17 @@
                         <option>8X6</option>
                         <option>9X7</option>
                     </select>
-            <span style="color:red" ng-show="myForm.siz.$invalid && myForm.siz.$pristine||myForm.siz.$invalid && myForm.siz.$dirty">
-              <span ng-show="myForm.siz.$error.required"></span>
-             </span>
+
                 </label>
                 <label class="item item-input item-select">
                     <div class="input-label">
-                        Color<font color="red">*</font>
+                        Color
                     </div>
                     <select ng-model="demand_color" ng-disabled="!demand_stone" name="col" required>
                         <option value="" style="display: none;">--Select One--</option>
                         <option ng-repeat="colu in colus" value={{colu}}>{{colu}}</option>
                     </select>
-            <span style="color:red" ng-show="myForm.col.$invalid && myForm.col.$pristine||myForm.col.$invalid && myForm.col.$dirty">
-              <span ng-show="myForm.col.$error.required"></span>
-            </span>
+
                 </label>
 
                 <label class="item item-input item-select">
@@ -89,34 +85,23 @@
                         <option>Trillion</option>
                         <option>Long Cushion </option>
                     </select>
-            <span style="color:red" ng-show="myForm.shap.$invalid && myForm.shap.$pristine||myForm.shap.$invalid && myForm.shap.$dirty">
-              <span ng-show="myForm.shap.$error.required"></span>
-            </span>
+
                 </label>
 
                 <label class="item item-input">
-                    <span class="input-label">Dimension <font color="red">*</font></span>
+                    <span class="input-label">Dimension </span>
                     <input type="text" style="text-align: right;" ng-model="demand_dimensions" name="dim" required>
-            <span style="color:red" ng-show="myForm.dim.$invalid && myForm.dim.$pristine||myForm.dim.$invalid && myForm.dim.$dirty">
-              <span ng-show="myForm.dim.$error.required"></span>
-            </span>
+
                 </label>
 
                 <label class="item item-input">
-                    <span class="input-label">Pieces <font color="red">*</font></span>
+                    <span class="input-label">Pieces </span>
                     <input type="text" style="text-align: right;" ng-model="demand_pieces" name="piece" required>
-            <span style="color:red" ng-show="myForm.piece.$invalid && myForm.piece.$pristine||myForm.piece.$invalid && myForm.piece.$dirty">
-              <span ng-show="myForm.piece.$error.required"></span>
-            </span>
+
                 </label>
 
                 <button class="button button-positive button-block" ng-disabled="myForm.stn.$invalid && myForm.stn.$pristine||
-          myForm.stn.$invalid && myForm.stn.$dirty||myForm.siz.$invalid && myForm.siz.$pristine||
-          myForm.siz.$invalid && myForm.siz.$dirty||myForm.col.$invalid && myForm.col.$pristine||
-          myForm.col.$invalid && myForm.col.$dirty||myForm.shap.$invalid && myForm.shap.$pristine||
-          myForm.shap.$invalid && myForm.shap.$dirty||myForm.piece.$invalid && myForm.piece.$pristine||
-          myForm.piece.$invalid && myForm.piece.$dirty||myForm.dim.$invalid && myForm.dim.$pristine||
-          myForm.dim.$invalid && myForm.dim.$dirty" ng-click="enterDemand();demand_stone='';demand_size='';demand_color='';demand_shape='';demand_pieces='';demand_dimensions='';demand_quantity='';">Submit</button>
+          myForm.stn.$invalid && myForm.stn.$dirty" ng-click="enterDemand();demand_stone='';demand_size='';demand_color='';demand_shape='';demand_pieces='';demand_dimensions='';demand_quantity='';">Submit</button>
             </div>
             </form>
         </ion-content>

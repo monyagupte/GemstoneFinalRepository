@@ -8,6 +8,10 @@
         "source": "D:\\myApp\\platforms\\android\\res\\drawable-port-xxhdpi\\screen.png"
     },
     {
+        "merged": "D:\\GemstoneFinalRepositoryDoneGITHUB\\GemstoneFinalRepository\\GemstoneFinalProject\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\drawable-port-xxhdpi-v4\\screen.png",
+        "source": "D:\\GemstoneFinalRepositoryDoneGITHUB\\GemstoneFinalRepository\\GemstoneFinalProject\\platforms\\android\\res\\drawable-port-xxhdpi\\screen.png"
+    },
+    {
         "merged": "C:\\Users\\Mohnish\\Desktop\\myApp\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\drawable-port-xxhdpi-v4\\screen.png",
         "source": "C:\\Users\\Mohnish\\Desktop\\myApp\\platforms\\android\\res\\drawable-port-xxhdpi\\screen.png"
     },

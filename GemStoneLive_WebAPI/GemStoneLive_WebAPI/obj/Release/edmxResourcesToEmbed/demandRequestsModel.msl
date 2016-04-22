@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="GemStone_LIVEModel6StoreContainer" CdmEntityContainer="GemStone_LIVEEntities4">
+  <EntityContainerMapping StorageEntityContainer="GemStone_LIVEModel6StoreContainer" CdmEntityContainer="GemStone_LIVEEntities11">
     <EntitySetMapping Name="demandRequests">
       <EntityTypeMapping TypeName="GemStone_LIVEModel6.demandRequest">
         <MappingFragment StoreEntitySet="demandRequests">

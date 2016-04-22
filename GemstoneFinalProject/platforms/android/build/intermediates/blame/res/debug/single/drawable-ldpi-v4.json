@@ -1,5 +1,9 @@
 [
     {
+        "merged": "D:\\GemstoneFinalRepositoryDoneGITHUB\\GemstoneFinalRepository\\GemstoneFinalProject\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\icon.png",
+        "source": "D:\\GemstoneFinalRepositoryDoneGITHUB\\GemstoneFinalRepository\\GemstoneFinalProject\\platforms\\android\\res\\drawable-ldpi\\icon.png"
+    },
+    {
         "merged": "D:\\GEMSTONE_REPOSITORY_NAYAWALA\\Gemstone_New_Repository\\GemstoneFinalProject\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\icon.png",
         "source": "D:\\GEMSTONE_REPOSITORY_NAYAWALA\\Gemstone_New_Repository\\GemstoneFinalProject\\platforms\\android\\res\\drawable-ldpi\\icon.png"
     },

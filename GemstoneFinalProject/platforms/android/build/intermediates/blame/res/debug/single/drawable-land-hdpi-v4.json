@@ -4,6 +4,10 @@
         "source": "C:\\Users\\sai\\Desktop\\myApp\\platforms\\android\\res\\drawable-land-hdpi\\screen.png"
     },
     {
+        "merged": "D:\\GemstoneFinalRepositoryDoneGITHUB\\GemstoneFinalRepository\\GemstoneFinalProject\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\drawable-land-hdpi-v4\\screen.png",
+        "source": "D:\\GemstoneFinalRepositoryDoneGITHUB\\GemstoneFinalRepository\\GemstoneFinalProject\\platforms\\android\\res\\drawable-land-hdpi\\screen.png"
+    },
+    {
         "merged": "D:\\myApp\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\drawable-land-hdpi-v4\\screen.png",
         "source": "D:\\myApp\\platforms\\android\\res\\drawable-land-hdpi\\screen.png"
     },

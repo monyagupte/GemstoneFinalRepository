@@ -14,7 +14,7 @@ namespace GemStoneLive_WebAPI.Controllers
 {
     public class demandRequestsController : ApiController
     {
-        private GemStone_LIVEEntities4 db = new GemStone_LIVEEntities4();
+        private GemStone_LIVEEntities11 db = new GemStone_LIVEEntities11();
 
         // GET: api/demandRequests
         public IQueryable<demandRequest> GetdemandRequests()

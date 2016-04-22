@@ -9,6 +9,13 @@
         <dex dex="D:\GEMSTONE_REPOSITORY_NAYAWALA\Gemstone_New_Repository\GemstoneFinalProject\platforms\android\build\intermediates\pre-dexed\debug\CordovaLib-unspecified-debug_d442c48355ef2c324971b7c1d5e3fd475204007b.jar" />
     </item>
     <item
+        jar="D:\GemstoneFinalRepositoryDoneGITHUB\GemstoneFinalRepository\GemstoneFinalProject\platforms\android\build\intermediates\exploded-aar\android\CordovaLib\unspecified\debug\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="4a98d101b35bb98fb6ac5458be57d1891d006e37">
+        <dex dex="D:\GemstoneFinalRepositoryDoneGITHUB\GemstoneFinalRepository\GemstoneFinalProject\platforms\android\build\intermediates\pre-dexed\debug\CordovaLib-unspecified-debug_8c81c720a397674704567925af0ae915dc07fc5f.jar" />
+    </item>
+    <item
         jar="C:\Users\Mohnish\Desktop\myApp\platforms\android\build\intermediates\exploded-aar\android\CordovaLib\unspecified\debug\jars\classes.jar"
         jumboMode="false"
         revision="23.0.2"

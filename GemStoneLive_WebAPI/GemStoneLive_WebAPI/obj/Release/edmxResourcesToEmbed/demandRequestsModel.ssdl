@@ -7,11 +7,11 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="StoneName" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Size" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Color" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Shape" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Dimension" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Pieces" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Size" Type="varchar" MaxLength="50" />
+    <Property Name="Color" Type="varchar" MaxLength="50" />
+    <Property Name="Shape" Type="varchar" MaxLength="50" />
+    <Property Name="Dimension" Type="varchar" MaxLength="50" />
+    <Property Name="Pieces" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityContainer Name="GemStone_LIVEModel6StoreContainer">
     <EntitySet Name="demandRequests" EntityType="Self.demandRequests" Schema="dbo" store:Type="Tables" />

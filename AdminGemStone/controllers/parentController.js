@@ -758,13 +758,82 @@ $scope.approve_req=function()
 
 
 
+	$scope.chngPass=function(oldPass,newPass,confirm_pass){
+
+		$http.get("http://gemstonelive.azurewebsites.net/api/panelUsers?username="+user)
+			.then(function onFulfilled(resp) {
+
+				$scope.getdata = resp.data;
+				var getDetails = $scope.getdata;
+				var id = getDetails[0].id;
+				var pass=oldPass;
+				var first = getDetails[0].firstName;
+				var last = getDetails[0].lastName;
+				var usernam= getDetails[0].userName;
+				var checkPass = getDetails[0].passWord;
+				var userrole = getDetails[0].userRole;
+				var cont = getDetails[0].contact;
+				var eid = getDetails[0].emailId;
+
+				var new_pass = newPass;
+				var confirmpass = confirm_pass;
+				//alert(confirm_pass);
+				if (pass==checkPass){
+					if(new_pass==confirmpass) {
+						//alert("1");
+						$http.delete("http://gemstonelive.azurewebsites.net/api/panelUsers/"+id)
+							.success(function (res) {
+
+								var request = $http({
+									method: "post",
+									url: "http://gemstonelive.azurewebsites.net/api/panelUsers",
+									crossDomain: true,
+									data: {
+										firstName: first,
+										lastName: last,
+										userName: usernam,
+										passWord: new_pass,
+										userRole: userrole,
+										contact: cont,
+										emailId: eid
+
+									},
+									headers: {'Content-Type': 'application/json'}
+								}).success(function (resp) {
+
+									alert('Password Changed Successfully');
+								})
+
+							})
+
+
+					}
+					else
+					{
+						alert("Passwords doesn't match..")
+					}
+				}
+				else
+				{
+					alert("Wrong Password!! Please Enter the Correct Old Password")
+				}
+
+			})
+	};
+
+	$scope.changePass = function()
+	{
+		$state.go("changepass");
+		//window.location = "changePassword.html";
+	}
+
 	$scope.increment=function(){
 		var count=1;
 		count=count+1;
-	}
+	};
 
 	$scope.modalShown = false;
-	var showLoginDialog = function() {
+
 		if (!$scope.modalShown) {
 			$scope.modalShown = true;
 			var modalInstance = $modal.open({
@@ -776,7 +845,7 @@ $scope.approve_req=function()
 			modalInstance.result.then(function () {
 				$scope.modalShown = false;
 			});
-		}
+
 	};
 	$scope.modalShow = false;
 
@@ -789,14 +858,14 @@ $scope.approve_req=function()
 	};
 	
 	$scope.currentUser = null;
-	$scope.userRoles = USER_ROLES;
-	$scope.isAuthorized = Auth.isAuthorized;
+	//$scope.userRoles = USER_ROLES;
+	//$scope.isAuthorized = Auth.isAuthorized;
 
 	//listen to events of unsuccessful logins, to run the login dialog
-	$rootScope.$on(AUTH_EVENTS.notAuthorized, showNotAuthorized);
+	/*$rootScope.$on(AUTH_EVENTS.notAuthorized, showNotAuthorized);
 	$rootScope.$on(AUTH_EVENTS.notAuthenticated, showLoginDialog);
 	$rootScope.$on(AUTH_EVENTS.sessionTimeout, showLoginDialog);
 	$rootScope.$on(AUTH_EVENTS.logoutSuccess, showLoginDialog);
-	$rootScope.$on(AUTH_EVENTS.loginSuccess, setCurrentUser);
+	$rootScope.$on(AUTH_EVENTS.loginSuccess, setCurrentUser);*/
 	
 } ]);
